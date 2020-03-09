@@ -1,5 +1,6 @@
 import constants from '../constants/story';
 
+// not in use yet
 export const currentStory = (state={}, action) => {
 	switch(action.type){
 		case '':

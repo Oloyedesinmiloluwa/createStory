@@ -29,7 +29,6 @@ const Login = ({history}) => {
 		dispatch(login({email, password}, isAdmin))
 		.then((res) => {
 			setLoading(false);
-			console.log(res)
 			res.data.userRoles[0] === 'Admin' 
 			? history.push('/stories')
 			: history.push('/story/new');

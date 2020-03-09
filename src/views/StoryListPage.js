@@ -6,18 +6,6 @@ import './storyListPage.scss';
 import HeaderContainer from '../components/HeaderContainer';
 import Notify from '../components/Notify';
 
-/* const stories = [
-	{
-		summary: 'create login page',
-		description: 'It all starts with a login page, so let us start',
-		cost: '$120',
-		type: 'enhancement',
-		complexity: 'mid',
-		estimatedHrs: '1',
-		status: 'accepted'
-	}
-] */
-
 const StoryListPage = (props) => {
 	const [apiError, setApiError] = useState({});
 	const dispatch = useDispatch();

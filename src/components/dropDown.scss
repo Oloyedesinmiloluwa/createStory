@@ -12,9 +12,7 @@ select {
 p {
 	font-size: .75rem;
 	margin-top: -20px;
-	// margin-top: 0;
 	color: red;
-	// margin-top: -5px;
 	&:empty{
 		margin-top: 0px;
 	}

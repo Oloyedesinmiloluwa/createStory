@@ -1,26 +1,23 @@
 .side-nav {
-	@media screen {
-		position: fixed;
-		top: 0;
-		left: -200px;
-		width: 200px;//40vw;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.575);
-		color: white;
-		transition: left .5s ease-in, background-color 1s ease-in;
-		ul {
-			margin-top: 160px;
-			list-style-type: none;
-			font-size: 1.05rem;
-			font-weight: bold;
-			li{
-				margin-bottom: 20px;
-				a{
-					color: white;
-					text-decoration: none;
-				}
+	position: fixed;
+	top: 0;
+	left: -200px;
+	width: 200px;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.575);
+	color: white;
+	transition: left .5s ease-in, background-color 1s ease-in;
+	ul {
+		margin-top: 160px;
+		list-style-type: none;
+		font-size: 1.05rem;
+		font-weight: bold;
+		li{
+			margin-bottom: 20px;
+			a{
+				color: white;
+				text-decoration: none;
 			}
 		}
 	}
-	
 }

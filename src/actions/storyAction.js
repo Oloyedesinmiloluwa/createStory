@@ -12,7 +12,6 @@ export const getStories = () => dispatch => {
 		}
 	})
 	.then(res => {
-		console.log(res)
 		if (res.statusText === 'OK') {
 			dispatch(getStoriesAction(res.data))
 		}

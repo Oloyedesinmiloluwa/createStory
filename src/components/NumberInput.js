@@ -1,6 +1,5 @@
 import React from 'react'
 import './input.scss';
-// import './numberInput.scss';
 import ErrorText from './ErrorText';
 
 const NumberInput = ({label, id, onChange, value, disabled, errorText}) => {

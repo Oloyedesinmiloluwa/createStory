@@ -32,7 +32,6 @@ const CreateStory = (props) => {
 		const errors = validateStory(story);
 		
 		if(Object.keys(errors).length){
-			console.log(errors);
 			setLoading(false)
 			return setError(errors);
 		}
