@@ -1,0 +1,17 @@
+.menu-icon {
+	display: none;
+	@media only screen and (max-width: 600px){
+		display: inline-block;
+	
+		div {
+			height: 3px;
+			background-color: white;
+			width: 30px;
+			margin-bottom: 4px;
+			margin-right: 13px;
+			&:last-of-type {
+				margin-bottom: 0px;
+			}
+		}
+	}
+}
