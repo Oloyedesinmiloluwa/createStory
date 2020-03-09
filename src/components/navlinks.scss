@@ -1,0 +1,29 @@
+.nav-links {
+	ul {
+		display: flex;
+		flex-direction: row;
+		list-style-type: none;
+		font-size: 1.3rem;
+		font-weight: 600;
+		height: 100%;
+		padding-top: 20px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		li {
+			margin-right: 20px;
+			button {
+				color: white;
+				font-size: 1.3rem;
+			}
+			&:hover {
+				border-bottom: solid 3px white;
+			}
+			&.active{
+				border-bottom: solid 3px white;
+			}
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		display: none;
+	}
+}

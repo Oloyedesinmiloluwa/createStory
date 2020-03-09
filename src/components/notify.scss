@@ -1,0 +1,27 @@
+.notify{
+	position: absolute;
+	background-color: black;
+	color: white;
+	height: 100px;
+	padding: 20px;
+    top: -200px;
+    left: 50%;
+    margin-left: -150px;
+	width: 300px;
+	transition: top ease-in .5s ;
+	border-radius: 3px;
+	z-index: 10;
+   button {
+	   position: absolute;
+	   bottom: 10px;
+	   right: 10px;
+	   color: white;
+	   font-size: .75rem;
+	   border: solid 1px white;
+	   border-radius: 3px;
+	   background-color: inherit;
+	   padding: 2px 5px;
+	   text-transform: uppercase;
+	   outline: 0;
+   }
+}

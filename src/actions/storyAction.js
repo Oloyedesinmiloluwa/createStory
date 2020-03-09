@@ -1,50 +1,51 @@
-import axios from "axios"
 import constants from '../constants/story';
+import api from "./api";
 
-
-const getStoriesAction = (story) => ({
+const getStoriesAction = (stories) => ({
 	type: constants.GET_STORIES_SUCCESS,
-	story
+	stories
 });
-const baseUrl = process.env.REACT_APP_BASE_URL;
 export const getStories = () => dispatch => {
-	return axios(`${baseUrl}/api/getStories`, {
+	return api('/api/getStories', {
 		headers: {
 			'Accept': 'application/json'
 		}
 	})
 	.then(res => {
-		console.log(res)
 		if (res.statusText === 'OK') {
 			dispatch(getStoriesAction(res.data))
 		}
 		return res.data;
 	})
-	.catch(error => alert('Error Ocurred:', error));
 }
-const createStoryAction = (story)=> ({story});
+const createStoryAction = (story)=> ({type: constants.CREATE_STORY_SUCCESS, story});
 export const createStory = (data) => dispatch => {
 	const story = JSON.stringify(data);
-	return axios.post(`${baseUrl}/api/createStories`, story)
+	return api.post(`/api/createStories`, story,{headers: {'content-type': 'application/json'}})
 	.then(res => {
-		if (res.statusText === 'OK') {
+		if (res.statusText === 'Created') {
 			dispatch(createStoryAction(res.data))
 		}
+		return res.data;
 	})
-	.catch(err => alert('Error Ocurred:', err)); // consider removing or improving
 }
-export const updateStory = (story) => dispatch => {
-	return (Promise.resolve(
-	dispatch({
-		type: constants.UPDATE_CURRENT_STORY_SUCCESS,
-		story
-	})		
-	));
-	
-	/* axios()
+export const updateStoryStatus = (story,status) => dispatch => {
+	let url = `/api/stories/${story.id}/`;
+	if (status === 'accepted'){
+		url += 'approve'
+	} else if(status === 'rejected'){
+		url += 'reject'
+	}
+	return api.put(url)
 	.then(res => {
-		if (res.statusText === 'OK') {
+		if(res.status === 200){
+			dispatch({
+				type: constants.UPDATE_CURRENT_STORY_SUCCESS,
+				story: res.data
+			})
 		}
+		return res.data;
 	})
-	.catch(err => alert('Error Ocurred:', err)); */
-}
+	
+	
+	}

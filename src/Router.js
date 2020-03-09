@@ -10,18 +10,14 @@ import { useSelector } from 'react-redux';
 
 const AppRouter = (props) => {
 	let user = useSelector(state => state.user);
-	// debugger
 	return(
 	<Router>
 		<Switch>
-			{/*Review the next line*/}
 			<Route path="/" component={Login} exact/>
 			<Route path="/login" component={Login} />
-			{/* isloggedin true for now */}
-			<AuthRoute {...props} path="/story/new" component={CreateStory} isLoggedIn={true || (user && user.isLoggedIn)} />
-			{/* <Route path="/story/new" component={CreateStory} /> */}
-			<Route path="/stories" component={StoryListPage} exact/>
-			<Route path="/stories/:storyId/review" component={ReviewStory} />
+			<AuthRoute {...props} path="/story/new" component={CreateStory} isLoggedIn={user && user.isLoggedIn} />
+			<AuthRoute {...props} path="/stories" component={StoryListPage} isLoggedIn={user && user.isLoggedIn} exact/>
+			<AuthRoute {...props} path="/stories/:storyId/review" component={ReviewStory} isLoggedIn={user && user.isLoggedIn} />
 			<Route component={NotFound} />
 		</Switch>
 	</Router>)

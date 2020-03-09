@@ -5,10 +5,7 @@ const ErrorText = ({style, children}) => {
 	const defaultStyle = {
 		fontSize: '.75rem',
 		marginTop: '-20px',
-		color: 'red',
-		// '& :empty': {
-		// 	marginTop: '0px'
-		// }
+		color: 'red'
 	}
 	return (
 		<p className="errorText" style={{...defaultStyle,...style}}>
