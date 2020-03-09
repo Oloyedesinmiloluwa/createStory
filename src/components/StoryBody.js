@@ -1,16 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Body from './Body';
 import Input from './Input';
 import Dropdown from './Dropdown';
 import Loader from './Loader';
 import Button from './Button';
 import NumberInput from './NumberInput';
-import { useSelector } from 'react-redux';
 import './storybody.scss'
 import TextArea from './TextArea';
-// const StoryBody = ({handleSubmit, summary, setSummary, setDescription, description,cost,setCost,setTime, time, loading, disabled, history}) => {
-const StoryBody = ({handleSubmit, setSummary, setType, setComplexity, setDescription, setCost,setTime, loading, disabled, story, error, handleReview, isAdmin}) => {
-// const StoryBody = ({history, disabled}) => {
+
+const StoryBody = ({
+	handleSubmit,
+	setSummary,
+	setType,
+	setComplexity,
+	setDescription,
+	setCost,setTime,
+	loading,
+	disabled,
+	story,
+	error,
+	handleReview,
+	isAdmin}) => {
 	
 	const {summary, description, estimatedHrs, cost, complexity, type} = story;
 	const errorText = error || {};
@@ -24,14 +34,6 @@ const StoryBody = ({handleSubmit, setSummary, setType, setComplexity, setDescrip
 					disabled={disabled}
 					errorText={errorText['summary']}
 				/>
-				{/* <Input
-					label="Description"
-					value={description}
-					onChange={(e)=>setDescription(e.target.value)}
-					id="description"
-					disabled={disabled}
-					errorText={errorText['description']}
-				/> */}
 				<TextArea
 					label="Description"
 					value={description}
@@ -39,20 +41,17 @@ const StoryBody = ({handleSubmit, setSummary, setType, setComplexity, setDescrip
 					id="description"
 					disabled={disabled}
 					errorText={errorText['description']}
-				
 				/>
 				<NumberInput
-					label="Cost"
+					label="Cost($)"
 					value={cost}
 					onChange={(e)=>setCost(e.target.value)}
 					id="cost"
-					type="number"
-					defaultValue="$"
 					disabled={disabled}
 					errorText={errorText['cost']}
 				/>
-				<Input
-					label="Time"
+				<NumberInput
+					label="Time(hrs)"
 					value={estimatedHrs}
 					onChange={(e)=>setTime(e.target.value)}
 					id="time"
