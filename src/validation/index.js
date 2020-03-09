@@ -1,15 +1,23 @@
 export const validateLogin = (data) => {
-	let error = [];
+	let error = {};
 	if(!data.email){
-		error.push( "Email is required");
+		error.email =  "Email is required";
 	}
 	if (!data.password){
-		error.push( "Password is required");
+		error.password = "Password is required";
 	}
 	return error;
 }
 export const validateStory = (data) => {
 	let error = {};
+	const requiredkeys = ['summary', 'description', 'cost', 'estimatedHrs', 'complexity', 'type'];
+	requiredkeys.forEach(field => {
+		if(!data[field]){
+			error[field] = `${field} field is required`
+		}
+	});
+	return error;
+	/* 
 	if(!data.summary){
 		error.summary= ["Summary is required"]
 	}
@@ -27,6 +35,6 @@ export const validateStory = (data) => {
 	}
 	if(!data.estimatedHrs){
 		error.estimatedHrs= ["Time is required"]
-	}
-	return error;
+	} 
+	return error;*/
 }
