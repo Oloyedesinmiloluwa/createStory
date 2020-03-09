@@ -1,0 +1,23 @@
+.header {
+	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		
+		h2 {
+			display: inline-block;
+		}
+		.brand {
+			display: flex;
+		}
+		color: white;
+		background-color: black;
+		padding: 1px 10px;
+		box-sizing: border-box;
+		position: fixed;
+		width: 100%;
+		z-index: 10;
+		top: 0px;
+	}
+	
+}
