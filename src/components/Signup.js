@@ -1,38 +1,37 @@
 import React, {useState} from 'react';
 import Button from './Button';
-import {Link} from 'react-router-dom';
-import './login.scss';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {login} from '../actions/loginAction';
+import { signup} from '../actions/loginAction';
 import Loader from './Loader';
-import { validateLogin } from '../validation';
+import { validateSignup } from '../validation';
 import Input from './Input';
 import Body from './Body';
 import Notify from './Notify';
+import './login.scss';
 
-const Login = ({history}) => {
+const Signup = ({history}) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
 	const [loading, setLoading] = useState(false);
-	const [isAdmin, setIsAdmin] = useState(false);
 	const [error, setError] = useState({});
 	const [apiError, setApiError] = useState({});
 	const dispatch = useDispatch();
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const errorObject = validateLogin({email, password})
+		const errorObject = validateSignup({email, password, firstName, lastName})
 		if(Object.keys(errorObject).length){
 			
 			setError(errorObject);
 			return;
 		}
 		setLoading(true);
-		dispatch(login({email, password}, isAdmin))
-		.then((res) => {
+		dispatch(signup({email, password,firstName, lastName}))
+		.then(() => {
 			setLoading(false);
-			res.data.userRoles[0] === 'Admin' 
-			? history.push('/stories')
-			: history.push('/story/new');
+			history.push('/login');
 		})
 		.catch(err => {
 			setLoading(false);
@@ -42,9 +41,6 @@ const Login = ({history}) => {
 			setApiError({message: err.response.data && err.response.data.message})
 		});
 	}
-	const handleToggle = (e) => {
-		e.target.checked ?	setIsAdmin(true) : setIsAdmin(false);	
-	}
 
 
 	return (
@@ -52,6 +48,20 @@ const Login = ({history}) => {
 		<Notify handleCancel={()=>setApiError({})} notify={!!Object.keys(apiError).length}>{apiError.message}</Notify>
 		<div className="login">
 			<Body>
+				<Input 
+					label="Firstname"
+					value={firstName}
+					onChange={(e)=>setFirstName(e.target.value)}
+					id="firstName"
+					errorText={error.firstName}
+				/>
+				<Input 
+					label="Lastname"
+					value={lastName}
+					onChange={(e)=>setLastName(e.target.value)}
+					id="lastName"
+					errorText={error.lastName}
+				/>
 				<Input 
 					type="email" 
 					label="Email"
@@ -68,16 +78,12 @@ const Login = ({history}) => {
 					id="password"
 					errorText={error.password}
 				/>
-				<div className="checkbox">
-					<input type="checkbox" value={isAdmin} onChange={handleToggle} id="checkbox" />
-					<label htmlFor="checkbox">Login as Admin</label>
-				</div>
 				<Button onClick={handleSubmit}>Submit {loading && <Loader />}</Button>
-				<Link style={{float: 'right'}} to="/signup">Signup</Link>
+				<Link to="/login">Login</Link>
 			</Body>
 		</div>
 		</>
 	)
 }
 
-export default Login
+export default Signup

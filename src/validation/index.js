@@ -8,6 +8,21 @@ export const validateLogin = (data) => {
 	}
 	return error;
 }
+export const validateSignup = (data) => {
+	return isRequired(data, ['email', 'password', 'firstName', 'lastName'])	
+}
+
+const isRequired = (data, requiredKeys=[]) => {
+	let error = {};
+
+	requiredKeys.forEach(field => {
+		if(!data[field]){
+			error[field] = `${field} field is required`
+		}
+	});
+	return error;
+}
+
 export const validateStory = (data) => {
 	let error = {};
 	const requiredkeys = ['summary', 'description', 'cost', 'estimatedHrs', 'complexity', 'type'];
