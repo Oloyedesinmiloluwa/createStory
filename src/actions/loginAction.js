@@ -25,3 +25,18 @@ export const login = (data, isAdmin) => dispatch => {
 		}
 	});
 }
+export const signup = (data) => dispatch => {
+	const user = JSON.stringify(data);
+	const url = '/api/signup';
+	return api.post(url, user, {
+		headers: {
+			'Content-Type': 'Application/json'
+		}
+	})
+	.then(res => {
+		if (res.status === 200) {
+			dispatch(createUser(res.data))
+			return res;
+		}
+	});
+}
