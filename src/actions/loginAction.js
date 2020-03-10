@@ -33,10 +33,4 @@ export const signup = (data) => dispatch => {
 			'Content-Type': 'Application/json'
 		}
 	})
-	.then(res => {
-		if (res.status === 200) {
-			dispatch(createUser(res.data))
-			return res;
-		}
-	});
 }

@@ -29,7 +29,7 @@ const Signup = ({history}) => {
 		}
 		setLoading(true);
 		dispatch(signup({email, password,firstName, lastName}))
-		.then((res) => {
+		.then(() => {
 			setLoading(false);
 			history.push('/login');
 		})
