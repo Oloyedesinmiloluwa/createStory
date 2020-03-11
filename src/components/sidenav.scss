@@ -7,6 +7,7 @@
 	background-color: rgba(0, 0, 0, 0.575);
 	color: white;
 	transition: left .5s ease-in, background-color 1s ease-in;
+	z-index: 1;
 	ul {
 		margin-top: 160px;
 		list-style-type: none;
