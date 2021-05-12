@@ -1,5 +1,5 @@
 # CreateStory
-App for creating a User Story
+An App for tracking user stories, that is a project managment tool.
 
 ### Key dependencies
 
